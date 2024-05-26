@@ -1,28 +1,36 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react"
-import { paths } from "./main";
+import { useEffect, useState } from "react"
+import { data, getThemeAndPath } from "./App/Features/globalData/globalDataSlice";
 
-
-
-const App = ({colorModTheme}) => {
-  const componentIs = window.location.pathname;
+const App = () => {
   const [text, setText] = useState("");
-  console.log(componentIs === `/${paths.forFavs}` ? colorModTheme: "")
+
   const formEventHandler = event => {
     event.preventDefault();
     setText(event.target.input.value);
   }
   
+  useEffect(()=>{
+    const [theme, path] = getThemeAndPath();
+    document.querySelector("#title").classList.add(theme);
+    if(data.forSearch.path=== path){
+      document.querySelector("#searchButton").classList.add(theme);
+    }
+    else{
+      document.querySelector("#favsButton").classList.add(theme);
+    }
+  })
+
   return (
     <>
-    <h1 className={`title ${colorModTheme}`}>Title</h1>
+    <h1 className="title" id="title">Title</h1>
     <div>
       <form onSubmit={formEventHandler}>
         <input type="text" name="input"/>
       </form>
-      <button className={`styledButton ${componentIs === `/${paths.forSearch}` ? colorModTheme: ""}`}>Search</button>
-      <button className={`styledButton ${componentIs === `/${paths.forFavs}` ? colorModTheme: ""}`}>Favs</button>
+      <button className="styledButton" id="searchButton">Search</button>
+      <button className="styledButton" id="favsButton">Favs</button>
       <p>{text}</p>
       </div>
     </>
@@ -30,4 +38,13 @@ const App = ({colorModTheme}) => {
   
 }
 
+/*
+export const getTheme = (path) => {
+  for(const element in globalData){
+      if(`/${element.path}` === path){
+          return element.theme;
+      }
+  }
+}
+*/
 export default App;
