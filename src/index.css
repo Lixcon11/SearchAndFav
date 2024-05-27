@@ -36,12 +36,16 @@ a {
   border-radius: 8px;
   background-color: white;
 
-  &.--searchTheme {
-    background-color: var(--search)
+  &.--searchButton {
+    &.--searchTheme {
+      background-color: var(--search)
+    }
   }
 
-  &.--favsTheme {
-    background-color: var(--fav)
+  &.--favsButton {
+    &.--favsTheme {
+      background-color: var(--fav)
+    }
   }
 }
 
