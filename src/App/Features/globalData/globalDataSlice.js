@@ -15,3 +15,8 @@ export const getThemeAndPath = () => {
     }
     return "wrong theme input"
 }
+export const clean = classNames => {
+    for(let element in data){
+        classNames.map(className => document.querySelector(className).classList.remove(data[element].theme))
+    }
+}
