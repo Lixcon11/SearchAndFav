@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
- margin: 0;
- padding: 0;
- scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
- min-width: 320px;
+  min-width: 320px;
 }
 
 :root {
@@ -49,12 +49,3 @@ a {
   }
 }
 
-div {  
-  width: 100%;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-}
