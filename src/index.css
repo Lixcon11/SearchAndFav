@@ -49,6 +49,12 @@ a {
   }
 }
 
+.image-container {
+  display: flex;
+  flex-flow:row wrap;
+  justify-content:space-around;
+}
+
 .overlay {
   display: none;
   width: 400px;
@@ -57,6 +63,13 @@ a {
   position: absolute;
   z-index: 1;
   align-items: center;
+  justify-content: space-around;
+
+  & .division{
+    background-color: black;
+    width: 1px;
+    height: 100%;
+  }
   
 }
 
@@ -65,11 +78,13 @@ a {
 .icon {
   width: 180px;
   height: 180px;
+  cursor: pointer;
 }
 
 .display-photo{
   position: relative;
   width: 400px;
+  align-self: center;
 }
 
 .display-photo:hover > .overlay,

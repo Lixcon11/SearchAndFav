@@ -22,7 +22,7 @@ export const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
     return(
         <Overlay>
             <img src="/src/App/images/download.png" className="icon" onClick={e => dowloadHandler(photo, e)}/>
-            <div></div>
+            <div className="division"></div>
             <img onClick={e => favHandler(photo, e)} src={heart} className="icon"/>
         </Overlay>
     )
