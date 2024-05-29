@@ -17,7 +17,7 @@ const FavoriteImageDisplayer = () => {
         setPhotos(favs)
     }, [favs])
 
-    const favHandler = photo => {
+    const modalHandler = photo => {
 
         for(const fav of favs){
             
@@ -38,7 +38,7 @@ const FavoriteImageDisplayer = () => {
                 return(
                     <div key={i} className="display-photo">
                         <img src={element.urls.small}/>
-                        <FavoritePhotoOverlay favHandler={favHandler} dowloadHandler={dowloadHandler} photo={element}/>
+                        <FavoritePhotoOverlay modalHandler={modalHandler} dowloadHandler={dowloadHandler} photo={element}/>
                     </div>
                 )
             }): ""}
