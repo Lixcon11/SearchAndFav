@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addFavorite, removeFavorite } from "../Features/favorites/favoritesSlice";
 import { SearchPhotoOverlay } from "./SearchPhotoOverlay";
+import FileSaver from 'file-saver';
 
 const ImageDisplayer = () => {
     const dispath = useDispatch()
@@ -42,8 +43,10 @@ const ImageDisplayer = () => {
                 return;
             }
         }
-
         dispath(addFavorite(photo))
+    }
+    const dowloadHandler = photo => {
+        FileSaver.saveAs(photo.urls.full, `${photo.description}.jpg`)
     }
     return(
         <>
@@ -52,7 +55,7 @@ const ImageDisplayer = () => {
                 return(
                     <div key={i} className="display-photo">
                         <img src={element.urls.small}/>
-                        <SearchPhotoOverlay favHandler={favHandler} photo={element}/>
+                        <SearchPhotoOverlay favHandler={favHandler} dowloadHandler={dowloadHandler} photo={element}/>
                     </div>
                 )
             })}
@@ -61,5 +64,3 @@ const ImageDisplayer = () => {
 }
 
 export default ImageDisplayer;
-
-//<SearchPhotoOverlay favHandler={favHandler} photo={element}/>
