@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
-import { Overlay } from "./Overlay"
+import { Overlay } from "../App/Components/Overlay"
 import { useSelector } from "react-redux"
 
 export const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
-    
     const [heart, serHeart] = useState("/src/App/images/black-heart.png")
     const favs = useSelector(state => state.favorites)
-    //FileSaver.saveAs(photo.urls.full, photo.description)
 
     useEffect(()=> {
         serHeart("/src/App/images/black-heart.png")
@@ -18,7 +16,6 @@ export const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
             }
         }
     },[favs, photo])
-    console.log(photo)
     return(
         <Overlay>
             <img src="/src/App/images/download.png" className="icon" onClick={e => dowloadHandler(photo, e)}/>

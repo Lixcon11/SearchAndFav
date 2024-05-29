@@ -1,15 +1,17 @@
 
 /* eslint-disable react/prop-types */
-
+/*
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addFavorite, removeFavorite } from "../Features/favorites/favoritesSlice";
+import { addFavorite, removeFavorite } from "../App/Features/favorites/favoritesSlice";
 import { SearchPhotoOverlay } from "./SearchPhotoOverlay";
 import FileSaver from 'file-saver';
-
-const ImageDisplayer = () => {
+*/
+const FavoriteImageDisplayer = () => {
+    return <p></p>
+    /*
     const dispath = useDispatch()
     const [photos, setPhotos] = useState()
     const [loading, setLoading] = useState(true);
@@ -61,6 +63,7 @@ const ImageDisplayer = () => {
             })}
         </>
     )
+    */
 }
 
-export default ImageDisplayer;
+export default FavoriteImageDisplayer;
