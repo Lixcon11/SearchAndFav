@@ -1,6 +1,5 @@
 
 export const sortData = data => {
-
     let newData = [];
 
     for(const object of data) {

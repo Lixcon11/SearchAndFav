@@ -1,21 +1,65 @@
+
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { addFavorite, removeFavorite } from "../Features/favorites/favoritesSlice";
+import { SearchPhotoOverlay } from "./SearchPhotoOverlay";
 
-const ImageDisplayer = ({ display, format }) => {
-
+const ImageDisplayer = () => {
+    const dispath = useDispatch()
+    const [photos, setPhotos] = useState()
     const [loading, setLoading] = useState(true);
+    const display = useSelector(state => state.search)
     const photoStatus = display.status;
     const photoData = display.data;
     const photoError = display.error;
+    const favs = useSelector(state => state.favorites)
 
+    useEffect(()=> {
+        if(photoStatus === "fulfilled"){
+            setLoading(false)
+            setPhotos(photoData)
+        }
+        else if(photoStatus === "rejected"){
+            setLoading(false)
+            toast(`Error: ${photoError}`)
+        }
+        else if(photoStatus === "pending"){
+            setLoading(true)
+        }
 
-    console.log(photoData)
+    },[photoStatus, photoData, photoError])
+
+    const favHandler = photo => {
+
+        for(const fav of favs){
+            
+            if(fav.id === photo.id){
+                dispath(removeFavorite(photo))
+                return;
+            }
+        }
+
+        dispath(addFavorite(photo))
+    }
     return(
-        <section>
-            {photoData ? photoData.map((element, i) => format(element, i)): ""}
-        </section>
+        <>
+            <ToastContainer />
+            {loading ? "":photos.map((element, i) => {
+                return(
+                    <div key={i} className="display-photo">
+                        <img src={element.urls.small}/>
+                        <SearchPhotoOverlay favHandler={favHandler} photo={element}/>
+                    </div>
+                )
+            })}
+        </>
     )
 }
 
 export default ImageDisplayer;
+
+//<SearchPhotoOverlay favHandler={favHandler} photo={element}/>

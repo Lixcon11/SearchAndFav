@@ -49,3 +49,31 @@ a {
   }
 }
 
+.overlay {
+  display: none;
+  width: 400px;
+  inset: 0;
+  background-color: #3E3E3E95;
+  position: absolute;
+  z-index: 1;
+  align-items: center;
+  
+}
+
+
+
+.icon {
+  width: 180px;
+  height: 180px;
+}
+
+.display-photo{
+  position: relative;
+  width: 400px;
+}
+
+.display-photo:hover > .overlay,
+.display-photo:focus > .overlay,
+.display-photo:focus-within > .overlay {
+  display: flex;
+}
