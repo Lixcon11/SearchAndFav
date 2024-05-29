@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addFavorite, removeFavorite } from "../App/Features/favorites/favoritesSlice";
-import { SearchPhotoOverlay } from "./SearchPhotoOverlay";
+import SearchPhotoOverlay from "./SearchPhotoOverlay";
 import FileSaver from 'file-saver';
 
 const SearchImageDisplayer = () => {
@@ -43,7 +43,9 @@ const SearchImageDisplayer = () => {
                 return;
             }
         }
-        dispath(addFavorite(photo))
+        const date = new Date();
+        const fullDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        dispath(addFavorite({...photo, date: fullDate}))
     }
     const dowloadHandler = photo => {
         FileSaver.saveAs(photo.urls.full, `${photo.description}.jpg`)

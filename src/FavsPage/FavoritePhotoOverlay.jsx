@@ -2,7 +2,7 @@
 import { Overlay } from "../App/Components/Overlay"
 
 
-export const FavoritePhotoOverlay = ({modalHandler, dowloadHandler, photo}) => {
+const FavoritePhotoOverlay = ({modalHandler, dowloadHandler, photo}) => {
     
     return(
         <Overlay>
@@ -12,3 +12,5 @@ export const FavoritePhotoOverlay = ({modalHandler, dowloadHandler, photo}) => {
         </Overlay>
     )
 }
+
+export default FavoritePhotoOverlay;

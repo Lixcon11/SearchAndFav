@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Overlay } from "../App/Components/Overlay"
 import { useSelector } from "react-redux"
 
-export const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
+const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
     const [heart, serHeart] = useState("/src/App/images/black-heart.png")
     const favs = useSelector(state => state.favorites)
 
@@ -24,3 +24,5 @@ export const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
         </Overlay>
     )
 }
+
+export default SearchPhotoOverlay;
