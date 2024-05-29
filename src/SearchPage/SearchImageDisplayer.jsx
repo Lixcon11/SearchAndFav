@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { addFavorite, removeFavorite } from "../App/Features/favorites/favoritesSlice";
 import SearchPhotoOverlay from "./SearchPhotoOverlay";
 import FileSaver from 'file-saver';
+import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
 
 const SearchImageDisplayer = () => {
     const dispath = useDispatch()
@@ -52,15 +53,17 @@ const SearchImageDisplayer = () => {
     }
     return(
         <>
-            <ToastContainer />
-            {loading ? "":photos.map((element, i) => {
-                return(
-                    <div key={i} className="display-photo">
-                        <img src={element.urls.small}/>
-                        <SearchPhotoOverlay favHandler={favHandler} dowloadHandler={dowloadHandler} photo={element}/>
-                    </div>
-                )
-            })}
+            <ImageDisplayerZone>
+                <ToastContainer />
+                {loading ? "":photos.map((element, i) => {
+                    return(
+                        <div key={i} className="display-photo">
+                            <img src={element.urls.small}/>
+                            <SearchPhotoOverlay favHandler={favHandler} dowloadHandler={dowloadHandler} photo={element}/>
+                        </div>
+                    )
+                })}
+            </ImageDisplayerZone>
         </>
     )
 }

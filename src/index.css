@@ -20,14 +20,18 @@ a {
   color: var(--neutral);
 }
 
-.title {
+h1 {
   font-size: 48px;
 
-  &.--searchTheme {
+  & .search {
     color: var(--search)
   }
 
-  &.--favsTheme {
+  & .middle {
+    color: var(--neutral)
+  }
+
+  & .favs {
     color: var(--fav)
   }
 }

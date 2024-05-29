@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import Body from "../App/Components/Body";
 import FavoriteImageDisplayer from "./FavoriteImageDisplayer";
 import { useEffect, useState } from "react";
 import ModalPopup from "./ModalPopup";
+import SearcherOfFavorites from "./SearcherOfFavorites";
 
 const Favs = () => {
   const [modal, setModal] = useState({class: "", photo :{ urls: {}}})
@@ -13,10 +13,8 @@ const Favs = () => {
 
   return(
     <>
-      <Body theme="--favsTheme"/>
-      <section className="image-container">
-        <FavoriteImageDisplayer setModal={setModal}/>
-      </section>
+      <SearcherOfFavorites/>
+      <FavoriteImageDisplayer setModal={setModal}/>
       <ModalPopup modal={modal} setModal={setModal}/>
     </>
   )

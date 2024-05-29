@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Body from "../App/Components/Body";
+import SearcherOfSearch from "./SearcherOfSearch";
 import SearchImageDisplayer from "./SearchImageDisplayer";
 import { useEffect } from "react";
 
@@ -10,10 +10,10 @@ const Search= () => {
   }, [favs])
   return (
     <>
-      <Body theme="--searchTheme"/>
-      <section className="image-container">
+      <SearcherOfSearch/>
+      
         <SearchImageDisplayer/>
-      </section>
+      
     </>
   )
 }
