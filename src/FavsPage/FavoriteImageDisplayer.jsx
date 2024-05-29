@@ -8,13 +8,15 @@ import FileSaver from 'file-saver';
 import FavoritePhotoOverlay from "./FavoritePhotoOverlay";
 import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
 
-const FavoriteImageDisplayer = ({ setModal }) => {
+const FavoriteImageDisplayer = ({ setModal, preferences }) => {
     const [photos, setPhotos] = useState()
     const favs = useSelector(state => state.favorites)
 
     useEffect(() =>{
         setPhotos(favs)
-    }, [favs])
+        console.log(preferences.text)
+        
+    }, [favs, preferences])
 
     const modalHandler = photo => {
         setModal({class: "visible", "photo": {...photo}})
