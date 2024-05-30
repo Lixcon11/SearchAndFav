@@ -16,7 +16,7 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
     useEffect(() =>{
         let photoArray = favs;
 
-        if(photoArray){
+        if(photoArray[0]){
             if(preferences.text){
                 photoArray = filterByWords(photoArray, preferences.text);
             }
@@ -34,7 +34,7 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
     const dowloadHandler = photo => {
         downloadPhoto(photo)
     }
-
+    
     return(
         <>
             <ImageDisplayerZone>
