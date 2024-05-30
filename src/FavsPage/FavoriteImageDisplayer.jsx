@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FileSaver from 'file-saver';
 import FavoritePhotoOverlay from "./FavoritePhotoOverlay";
 import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
+import sortByWords from "../App/Functions/SortByWords"
 
 const FavoriteImageDisplayer = ({ setModal, preferences }) => {
     const [photos, setPhotos] = useState()
@@ -14,7 +15,10 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
 
     useEffect(() =>{
         setPhotos(favs)
-        console.log(preferences.text)
+        
+        if(preferences.text){
+            setPhotos(sortByWords(photos, preferences.text));
+        }
         
     }, [favs, preferences])
 
