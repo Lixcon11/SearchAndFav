@@ -3,11 +3,9 @@
 const Searcher = ({ handler }) => {
     return (
         <>
-
-        <form onSubmit={handler}>
-            <input type="text" name="input"/>
-        </form>
-
+            <form onSubmit={handler}>
+                <input type="text" name="input"/>
+            </form>
         </>
     )
 }

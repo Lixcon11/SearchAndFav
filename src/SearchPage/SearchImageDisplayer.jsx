@@ -1,14 +1,11 @@
-
-/* eslint-disable react/prop-types */
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addFavorite, removeFavorite } from "../App/Features/favorites/favoritesSlice";
 import SearchPhotoOverlay from "./SearchPhotoOverlay";
-import FileSaver from 'file-saver';
 import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
+import downloadPhoto from "../App/Functions/downloadPhoto";
 
 const SearchImageDisplayer = () => {
     const dispath = useDispatch()
@@ -49,8 +46,9 @@ const SearchImageDisplayer = () => {
         dispath(addFavorite({...photo, date: fullDate}))
     }
     const dowloadHandler = photo => {
-        FileSaver.saveAs(photo.urls.full, `${photo.description}.jpg`)
+        downloadPhoto(photo)
     }
+
     return(
         <>
             <ImageDisplayerZone>

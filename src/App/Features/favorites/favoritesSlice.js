@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const storage = JSON.parse(localStorage.getItem("favs"));
-
 const initialState = storage ? storage: []
 
 export const favoritesSlice = createSlice({

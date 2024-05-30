@@ -4,13 +4,16 @@ const filterByWords = (arrayOfobjects, text) => {
     
     for(const object of arrayOfobjects){
         let hasAll = true;
-        strings.forEach(word => {
-            if(!object.description.includes(word)){
-                hasAll = false
+
+        if(object.description){
+            strings.forEach(word => {
+                if(!object.description.includes(word)){
+                    hasAll = false
+                }
+            })
+            if(hasAll){
+                newArray.push(object)
             }
-        })
-        if(hasAll){
-            newArray.push(object)
         }
     }
 

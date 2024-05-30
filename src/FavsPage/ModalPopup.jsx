@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import { useDispatch} from "react-redux"
 import { changeDescription, removeFavorite } from "../App/Features/favorites/favoritesSlice"
 
@@ -13,15 +12,14 @@ const ModalPopup = ({ modal, setModal }) => {
         setModal({...modal, photo: {...modal.photo, description: event.target.input.value}})
         event.target.input.value = "";
     }
-
     const unfavHandler = () => {
         dispath(removeFavorite(modal.photo))
         setModal({class: "", photo :{ urls: {}}})
     }
-
     const closeHandler = () => {
         setModal({class: "", photo :{ urls: {}}})
     }
+    
     return(
         <>
             <article className={`popup --${modal.class}`}>
@@ -31,7 +29,7 @@ const ModalPopup = ({ modal, setModal }) => {
                     </div>
                     <div className="info">
                         <ul>
-                            <li>Title: {modal.photo.description ? modal.photo.description: "No title yet!"}</li>
+                            <li>Title: {modal.photo.description ? modal.photo.description: "Untiltled"}</li>
                             <li>Size: {modal.photo.width}x{modal.photo.height}</li>
                             <li>Likes: {modal.photo.likes}</li>
                             <li>Date: {modal.photo.date}</li>

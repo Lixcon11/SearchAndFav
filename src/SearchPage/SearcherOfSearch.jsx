@@ -9,6 +9,7 @@ import SearcherContainer from "../App/Components/SearcherContainer";
 const SearcherOfSearch= () => {
   const dispatch = useDispatch();
   const theme = "--searchTheme";
+  
   const formEventHandler = event => {
     event.preventDefault();
     dispatch(fetchPhotoListThunk(event.target.input.value))

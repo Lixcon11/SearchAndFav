@@ -8,6 +8,7 @@ import SortBy from "../App/Components/SortBy";
 
 const SearcherOfFavorites= ({ setPreferences }) => {
   const theme = "--favsTheme";
+  
   const formEventHandler = event => {
     event.preventDefault();
     setPreferences(state => ({...state, text:event.target.input.value}))

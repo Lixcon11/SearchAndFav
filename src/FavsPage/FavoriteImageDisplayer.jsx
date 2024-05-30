@@ -1,22 +1,21 @@
 
 /* eslint-disable react/prop-types */
-
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
-import FileSaver from 'file-saver';
 import FavoritePhotoOverlay from "./FavoritePhotoOverlay";
 import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
 import filterByWords from "../App/Functions/FilterByWords"
 import sortByPreference from "../App/Functions/SortByPreference";
+import downloadPhoto from "../App/Functions/downloadPhoto";
 
 const FavoriteImageDisplayer = ({ setModal, preferences }) => {
-    const [photos, setPhotos] = useState()
     const favs = useSelector(state => state.favorites)
+    const [photos, setPhotos] = useState()
 
     useEffect(() =>{
         let photoArray = favs;
-        console.log(photoArray)
+
         if(photoArray){
             if(preferences.text){
                 photoArray = filterByWords(photoArray, preferences.text);
@@ -25,17 +24,17 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
                 photoArray = sortByPreference(photoArray, preferences.sortBy)
             }
         }
-        console.log(photoArray)
+
         setPhotos(photoArray)
-        
     },[favs,preferences])
 
     const modalHandler = photo => {
         setModal({class: "visible", "photo": {...photo}})
     }
     const dowloadHandler = photo => {
-        FileSaver.saveAs(photo.urls.full, `${photo.description}.jpg`)
+        downloadPhoto(photo)
     }
+
     return(
         <>
             <ImageDisplayerZone>
@@ -50,7 +49,6 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
             </ImageDisplayerZone>
         </>
     )
-    
 }
 
 export default FavoriteImageDisplayer;

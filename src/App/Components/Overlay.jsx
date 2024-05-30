@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 
-export const Overlay = ({children}) => {
+const Overlay = ({children}) => {
     return(
-        <div className="overlay">
-            {children}
-        </div>
+        <>
+            <div className="overlay">
+                {children}
+            </div>
+        </>
     )
 }
+
+export default Overlay;
