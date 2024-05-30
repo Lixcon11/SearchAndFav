@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
-const SearcherZone = ({children}) => {
+const SearcherZone = ({children , theme}) => {
     return(
         <>
-            <section className="searchZone">
+            <section className={`search-zone ${theme}`}>
                 {children}
             </section>
         </>

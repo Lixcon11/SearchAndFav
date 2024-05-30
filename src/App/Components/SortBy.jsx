@@ -7,13 +7,13 @@ const SortBy = ({ functionToSortBy }) => {
 
     return(
         <>
-            <div>
+            <div className="sort-by">
                 <p>Sort by:</p>
                 <div>
-                    <button onClick={e =>clickHandler(e)}>Date</button>
-                    <button onClick={e =>clickHandler(e)}>Height</button>
-                    <button onClick={e =>clickHandler(e)}>Width</button>
-                    <button onClick={e =>clickHandler(e)}>Likes</button>
+                    <button onClick={e =>clickHandler(e)} className="styledButton --sortButton">Date</button>
+                    <button onClick={e =>clickHandler(e)} className="styledButton --sortButton">Height</button>
+                    <button onClick={e =>clickHandler(e)} className="styledButton --sortButton">Width</button>
+                    <button onClick={e =>clickHandler(e)} className="styledButton --sortButton">Likes</button>
                 </div>
             </div>
         </>

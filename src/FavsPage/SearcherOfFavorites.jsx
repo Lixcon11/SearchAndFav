@@ -8,7 +8,7 @@ import SortBy from "../App/Components/SortBy";
 
 const SearcherOfFavorites= ({ setPreferences }) => {
   const theme = "--favsTheme";
-  
+  const placeholder = "Look at favs"
   const formEventHandler = event => {
     event.preventDefault();
     setPreferences(state => ({...state, text:event.target.input.value}))
@@ -19,13 +19,13 @@ const SearcherOfFavorites= ({ setPreferences }) => {
 
   return (
     <>
-      <SearcherZone>
+      <SearcherZone theme={theme}>
         <Title/>
           <SearcherContainer>
-            <Searcher handler={formEventHandler}/>
+            <Searcher handler={formEventHandler} placeholder={placeholder}/>
             <LinkButtons theme={theme}/>
-            <SortBy functionToSortBy={functionToSortBy}/>
           </SearcherContainer>
+          <SortBy functionToSortBy={functionToSortBy}/>
       </SearcherZone>
     </>
   )

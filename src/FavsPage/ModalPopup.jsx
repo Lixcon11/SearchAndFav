@@ -19,7 +19,7 @@ const ModalPopup = ({ modal, setModal }) => {
     const closeHandler = () => {
         setModal({class: "", photo :{ urls: {}}})
     }
-    
+
     return(
         <>
             <article className={`popup --${modal.class}`}>
@@ -34,14 +34,12 @@ const ModalPopup = ({ modal, setModal }) => {
                             <li>Likes: {modal.photo.likes}</li>
                             <li>Date: {modal.photo.date}</li>
                         </ul>
-                        <div className="title-modify">
-                            <form onSubmit={handlerSubmit}>
-                                <input type="text" name="input"></input>
-                                <button>Save</button>
-                            </form>
-                        </div>
-                        <button className="__unfav" onClick={unfavHandler}>Unfav</button>
+                        <form onSubmit={handlerSubmit} className="form-input title-modify">
+                            <input type="text" name="input" placeholder="Change Title to..."></input>
+                            <button className="styledButton">Save</button>
+                        </form>
                     </div>
+                    <button className="styledButton --unfavButton __unfav" onClick={unfavHandler}>Unfav</button>
                     <button className="close" onClick={closeHandler}>X</button>
                 </div>
             </article>

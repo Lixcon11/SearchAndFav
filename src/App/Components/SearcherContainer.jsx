@@ -3,7 +3,7 @@
 const SearcherContainer = ({ children }) => {
     return(
         <>
-            <div className="container">
+            <div className="searcher-container">
                 {children}
             </div>
         </>

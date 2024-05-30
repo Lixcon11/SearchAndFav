@@ -3,7 +3,7 @@
 const ImageDisplayerZone = ({ children }) => {
     return(
         <>
-            <section className="image-container">
+            <section className="display-zone">
                 {children}
             </section>
         </>
