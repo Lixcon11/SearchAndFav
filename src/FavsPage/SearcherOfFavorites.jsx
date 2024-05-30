@@ -4,12 +4,16 @@ import LinkButtons from "../App/Components/LinkButtons";
 import Title from "../App/Components/Title";
 import SearcherZone from "../App/Components/SearcherZone";
 import SearcherContainer from "../App/Components/SearcherContainer";
+import SortBy from "../App/Components/SortBy";
 
-const SearcherOfFavorites= ({ preferences, setPreferences }) => {
+const SearcherOfFavorites= ({ setPreferences }) => {
   const theme = "--favsTheme";
   const formEventHandler = event => {
     event.preventDefault();
     setPreferences(state => ({...state, text:event.target.input.value}))
+  }
+  const functionToSortBy = e => {
+    setPreferences(state=> ({...state, sortBy: e.target.innerText.toLowerCase()}))
   }
 
   return (
@@ -19,6 +23,7 @@ const SearcherOfFavorites= ({ preferences, setPreferences }) => {
           <SearcherContainer>
             <Searcher handler={formEventHandler}/>
             <LinkButtons theme={theme}/>
+            <SortBy functionToSortBy={functionToSortBy}/>
           </SearcherContainer>
       </SearcherZone>
     </>

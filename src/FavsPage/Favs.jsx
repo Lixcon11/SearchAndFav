@@ -14,7 +14,7 @@ const Favs = () => {
 
   return(
     <>
-      <SearcherOfFavorites preferences={preferences} setPreferences={setPreferences}/>
+      <SearcherOfFavorites setPreferences={setPreferences}/>
       <FavoriteImageDisplayer setModal={setModal} preferences={preferences}/>
       <ModalPopup modal={modal} setModal={setModal}/>
     </>

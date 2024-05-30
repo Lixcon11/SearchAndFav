@@ -7,20 +7,28 @@ import 'react-toastify/dist/ReactToastify.css';
 import FileSaver from 'file-saver';
 import FavoritePhotoOverlay from "./FavoritePhotoOverlay";
 import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
-import sortByWords from "../App/Functions/SortByWords"
+import filterByWords from "../App/Functions/FilterByWords"
+import sortByPreference from "../App/Functions/SortByPreference";
 
 const FavoriteImageDisplayer = ({ setModal, preferences }) => {
     const [photos, setPhotos] = useState()
     const favs = useSelector(state => state.favorites)
 
     useEffect(() =>{
-        setPhotos(favs)
-        
-        if(preferences.text){
-            setPhotos(sortByWords(photos, preferences.text));
+        let photoArray = favs;
+        console.log(photoArray)
+        if(photoArray){
+            if(preferences.text){
+                photoArray = filterByWords(photoArray, preferences.text);
+            }
+            if(preferences.sortBy !== "date"){
+                photoArray = sortByPreference(photoArray, preferences.sortBy)
+            }
         }
+        console.log(photoArray)
+        setPhotos(photoArray)
         
-    }, [favs, preferences])
+    },[favs,preferences])
 
     const modalHandler = photo => {
         setModal({class: "visible", "photo": {...photo}})

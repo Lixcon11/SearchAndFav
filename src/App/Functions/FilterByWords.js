@@ -1,8 +1,8 @@
-const sortByWords = (objectArray, text) => {
+const filterByWords = (arrayOfobjects, text) => {
     const strings = text.split(" ")
     const newArray = []
     
-    for(const object of objectArray){
+    for(const object of arrayOfobjects){
         let hasAll = true;
         strings.forEach(word => {
             if(!object.description.includes(word)){
@@ -17,4 +17,4 @@ const sortByWords = (objectArray, text) => {
     return newArray;
 }
 
-export default sortByWords;
+export default filterByWords;

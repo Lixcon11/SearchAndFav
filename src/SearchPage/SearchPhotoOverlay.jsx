@@ -4,17 +4,18 @@ import { Overlay } from "../App/Components/Overlay"
 import { useSelector } from "react-redux"
 
 const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
-    const [heart, serHeart] = useState("/src/App/images/black-heart.png")
+    const [heart, setHeart] = useState("/src/App/images/black-heart.png")
     const favs = useSelector(state => state.favorites)
 
     useEffect(()=> {
-        serHeart("/src/App/images/black-heart.png")
+        let heartColor = "/src/App/images/black-heart.png";
         
         for(const fav of favs){
             if(fav.id === photo.id){
-                serHeart("/src/App/images/red-heart.png")
+                heartColor ="/src/App/images/red-heart.png";
             }
         }
+        setHeart(heartColor)
     },[favs, photo])
     return(
         <Overlay>
