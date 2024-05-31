@@ -6,9 +6,10 @@ import { addFavorite, removeFavorite } from "../App/Features/favorites/favorites
 import SearchPhotoOverlay from "./SearchPhotoOverlay";
 import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
 import downloadPhoto from "../App/Functions/downloadPhoto";
+import { fetchPhotoListThunk } from "../App/Features/search/searchThunk";
 
 const SearchImageDisplayer = () => {
-    const dispath = useDispatch()
+    const dispatch = useDispatch()
     const [photos, setPhotos] = useState()
     const [loading, setLoading] = useState(true);
     const display = useSelector(state => state.search)
@@ -16,6 +17,10 @@ const SearchImageDisplayer = () => {
     const photoData = display.data;
     const photoError = display.error;
     const favs = useSelector(state => state.favorites)
+
+    if(!photoData[0]) {
+        dispatch(fetchPhotoListThunk(""))
+    }
 
     useEffect(()=> {
         if(photoStatus === "fulfilled"){
@@ -37,13 +42,13 @@ const SearchImageDisplayer = () => {
         for(const fav of favs){
             
             if(fav.id === photo.id){
-                dispath(removeFavorite(photo))
+                dispatch(removeFavorite(photo))
                 return;
             }
         }
         const date = new Date();
         const fullDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-        dispath(addFavorite({...photo, date: fullDate}))
+        dispatch(addFavorite({...photo, date: fullDate}))
     }
     const dowloadHandler = photo => {
         downloadPhoto(photo)
