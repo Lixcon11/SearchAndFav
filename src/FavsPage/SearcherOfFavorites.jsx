@@ -5,6 +5,7 @@ import Title from "../App/Components/Title";
 import SearcherZone from "../App/Components/SearcherZone";
 import SearcherContainer from "../App/Components/SearcherContainer";
 import SortBy from "../App/Components/SortBy";
+import Media from "react-media";
 
 const SearcherOfFavorites= ({ setPreferences }) => {
   const theme = "--favsTheme";
@@ -23,8 +24,17 @@ const SearcherOfFavorites= ({ setPreferences }) => {
         <Title/>
           <SearcherContainer>
             <Searcher handler={formEventHandler} placeholder={placeholder}/>
-            <LinkButtons theme={theme}/>
+            <Media query="only screen and (min-width: 1000px) ">
+              {matches => {
+                return matches ? null : <LinkButtons theme={theme}/>
+              }}
+            </Media>
           </SearcherContainer>
+          <Media query="only screen and (min-width: 1000px) ">
+            {matches => {
+              return matches ? <LinkButtons theme={theme}/>: null
+            }}
+            </Media>
           <SortBy functionToSortBy={functionToSortBy}/>
       </SearcherZone>
     </>

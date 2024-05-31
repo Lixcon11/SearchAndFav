@@ -5,6 +5,7 @@ import LinkButtons from "../App/Components/LinkButtons";
 import Title from "../App/Components/Title";
 import SearcherZone from "../App/Components/SearcherZone";
 import SearcherContainer from "../App/Components/SearcherContainer";
+import Media from "react-media";
 
 const SearcherOfSearch= () => {
   const dispatch = useDispatch();
@@ -22,8 +23,17 @@ const SearcherOfSearch= () => {
         <Title/>
         <SearcherContainer>
           <Searcher handler={formEventHandler} placeholder={placeholder}/>
-          <LinkButtons theme={theme}/>
+          <Media query="only screen and (min-width: 1000px) ">
+              {matches => {
+                return matches ? null : <LinkButtons theme={theme}/>
+              }}
+            </Media>
         </SearcherContainer>
+        <Media query="only screen and (min-width: 1000px) ">
+            {matches => {
+              return matches ? <LinkButtons theme={theme}/>: null
+            }}
+        </Media>
       </SearcherZone>
     </>
   )
