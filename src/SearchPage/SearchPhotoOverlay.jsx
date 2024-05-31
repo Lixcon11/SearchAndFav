@@ -2,13 +2,15 @@
 import { useEffect, useState } from "react"
 import Overlay from "../App/Components/Overlay"
 import { useSelector } from "react-redux"
-import download from "../App/images/download.png"
+import { addFavorite, removeFavorite } from "../App/Features/favorites/favoritesSlice";
+import { useDispatch } from "react-redux";
 import blackHeart from "../App/images/black-heart.png"
 import redHeart from "../App/images/red-heart.png"
 
-const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
-    const [heart, setHeart] = useState("/src/App/images/black-heart.png")
+const SearchPhotoOverlay = ({ photo }) => {
+    const [heart, setHeart] = useState(blackHeart)
     const favs = useSelector(state => state.favorites)
+    const dispatch = useDispatch()
 
     useEffect(()=> {
         let heartColor = blackHeart;
@@ -22,12 +24,24 @@ const SearchPhotoOverlay = ({favHandler, dowloadHandler, photo}) => {
         setHeart(heartColor)
     },[favs, photo])
 
+    const favHandler = () => {
+
+        for(const fav of favs){
+            
+            if(fav.id === photo.id){
+                dispatch(removeFavorite(photo))
+                return;
+            }
+        }
+        const date = new Date();
+        const fullDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        dispatch(addFavorite({...photo, date: fullDate}))
+    }
+
     return(
         <>
             <Overlay>
-                <img src={download} className="icon" onClick={e => dowloadHandler(photo, e)}/>
-                <div className="division"></div>
-                <img onClick={e => favHandler(photo, e)} src={heart} className="icon"/>
+                <img onClick={favHandler} src={heart} className="icon"/>
             </Overlay>
         </>
     )

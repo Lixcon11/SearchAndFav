@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 import Overlay from "../App/Components/Overlay"
-import download from "../App/images/download.png"
 import eye from "../App/images/eye.png"
 
-const FavoritePhotoOverlay = ({ modalHandler, dowloadHandler, photo }) => {
+const FavoritePhotoOverlay = ({ setModal, photo }) => {
+
+    const modalHandler = () => {
+        setModal({class: "visible", "photo": {...photo}})
+    }
+
     return(
         <>
             <Overlay>
-                <img src={download} className="icon" onClick={e => dowloadHandler(photo, e)}/>
-                <div className="division"></div>
-                <img onClick={e => modalHandler(photo, e)} src={eye} className="icon"/>
+                <img onClick={modalHandler} src={eye} className="icon"/>
             </Overlay>
         </>
     )

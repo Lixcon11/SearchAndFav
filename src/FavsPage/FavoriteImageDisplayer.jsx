@@ -7,7 +7,6 @@ import FavoritePhotoOverlay from "./FavoritePhotoOverlay";
 import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
 import filterByWords from "../App/Functions/FilterByWords"
 import sortByPreference from "../App/Functions/SortByPreference";
-import downloadPhoto from "../App/Functions/downloadPhoto";
 
 const FavoriteImageDisplayer = ({ setModal, preferences }) => {
     const favs = useSelector(state => state.favorites)
@@ -27,13 +26,6 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
 
         setPhotos(photoArray)
     },[favs,preferences])
-
-    const modalHandler = photo => {
-        setModal({class: "visible", "photo": {...photo}})
-    }
-    const dowloadHandler = photo => {
-        downloadPhoto(photo)
-    }
     
     return(
         <>
@@ -42,10 +34,10 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
                     return(
                         <div key={i} className="display-photo">
                             <img src={element.urls.small}/>
-                            <FavoritePhotoOverlay modalHandler={modalHandler} dowloadHandler={dowloadHandler} photo={element}/>
+                            <FavoritePhotoOverlay setModal={setModal} photo={element}/>
                         </div>
                     )
-                }): ""}
+                }): null}
             </ImageDisplayerZone>
         </>
     )
