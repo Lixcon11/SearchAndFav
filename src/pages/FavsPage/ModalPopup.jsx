@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useDispatch} from "react-redux"
-import { changeDescription, removeFavorite } from "../App/Features/favorites/favoritesSlice"
+import { useDispatch } from "react-redux"
+import { changeDescription, removeFavorite } from "../../features/favorites/favoritesSlice"
 
-const ModalPopup = ({ modal, setModal }) => {
+export const ModalPopup = ({ modal, setModal }) => {
     const dispath = useDispatch()
 
     const handlerSubmit = (event) => {
@@ -46,5 +46,3 @@ const ModalPopup = ({ modal, setModal }) => {
         </>
     )
 }
-
-export default ModalPopup;

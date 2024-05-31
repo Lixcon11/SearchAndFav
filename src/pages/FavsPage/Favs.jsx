@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import FavoriteImageDisplayer from "./FavoriteImageDisplayer";
+import { FavoriteImageDisplayer } from "./FavoriteImageDisplayer";
 import { useEffect, useState } from "react";
-import ModalPopup from "./ModalPopup";
-import SearcherZone from "../App/Components/SearcherZone";
+import { ModalPopup } from "./ModalPopup";
+import {SearcherZone } from "../../components/SearcherZone";
 
-const Favs = () => {
+export const Favs = () => {
   const theme = "--favsTheme";
   const placeholder = "Look at favs"
   const favs = useSelector(state => state.favorites)
@@ -40,6 +40,4 @@ const Favs = () => {
       <ModalPopup modal={modal} setModal={setModal}/>
     </>
   )
-}
-
-export default Favs;
+};

@@ -1,4 +1,4 @@
-const filterByWords = (arrayOfobjects, text) => {
+export const filterByWords = (arrayOfobjects, text) => {
     const strings = text.split(" ")
     const newArray = []
     
@@ -19,5 +19,3 @@ const filterByWords = (arrayOfobjects, text) => {
 
     return newArray;
 }
-
-export default filterByWords;

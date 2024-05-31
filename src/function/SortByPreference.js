@@ -1,4 +1,4 @@
-const sortByPreference = (arrayOfobjects, toSortBy) =>{
+export const sortByPreference = (arrayOfobjects, toSortBy) =>{
     const toBeSorted = [...arrayOfobjects];
     const sortedArray = [toBeSorted.shift()];
 
@@ -19,5 +19,3 @@ const sortByPreference = (arrayOfobjects, toSortBy) =>{
 
     return sortedArray;
 }
-
-export default sortByPreference;

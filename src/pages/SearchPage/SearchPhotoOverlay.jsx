@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
-import Overlay from "../App/Components/Overlay"
+import { Overlay } from "../../components/Overlay"
 import { useSelector } from "react-redux"
-import { addFavorite, removeFavorite } from "../App/Features/favorites/favoritesSlice";
+import { addFavorite, removeFavorite } from "../../features/favorites/favoritesSlice";
 import { useDispatch } from "react-redux";
-import blackHeart from "../App/images/black-heart.png"
-import redHeart from "../App/images/red-heart.png"
+import blackHeart from "../../icons/black-heart.png"
+import redHeart from "../../icons/red-heart.png"
 
-const SearchPhotoOverlay = ({ photo }) => {
+export const SearchPhotoOverlay = ({ photo }) => {
     const [heart, setHeart] = useState(blackHeart)
     const favs = useSelector(state => state.favorites)
     const dispatch = useDispatch()
@@ -46,5 +46,3 @@ const SearchPhotoOverlay = ({ photo }) => {
         </>
     )
 }
-
-export default SearchPhotoOverlay;

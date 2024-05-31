@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
-import FavoritePhotoOverlay from "./FavoritePhotoOverlay";
-import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
-import filterByWords from "../App/Functions/FilterByWords"
-import sortByPreference from "../App/Functions/SortByPreference";
+import { FavoritePhotoOverlay } from "./FavoritePhotoOverlay";
+import { ImageDisplayerZone } from "../../components/ImageDisplayerZone";
+import { filterByWords } from "../../function/FilterByWords"
+import { sortByPreference } from "../../function/SortByPreference";
 
-const FavoriteImageDisplayer = ({ setModal, preferences }) => {
+export const FavoriteImageDisplayer = ({ setModal, preferences }) => {
     const favs = useSelector(state => state.favorites)
     const [photos, setPhotos] = useState()
 
@@ -42,5 +42,3 @@ const FavoriteImageDisplayer = ({ setModal, preferences }) => {
         </>
     )
 }
-
-export default FavoriteImageDisplayer;

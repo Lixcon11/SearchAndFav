@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import Overlay from "../App/Components/Overlay"
-import eye from "../App/images/eye.png"
+import { Overlay } from "../../components/Overlay"
+import eye from "../../icons/eye.png"
 
-const FavoritePhotoOverlay = ({ setModal, photo }) => {
+export const FavoritePhotoOverlay = ({ setModal, photo }) => {
 
     const modalHandler = () => {
         setModal({class: "visible", "photo": {...photo}})
@@ -16,5 +16,3 @@ const FavoritePhotoOverlay = ({ setModal, photo }) => {
         </>
     )
 }
-
-export default FavoritePhotoOverlay;

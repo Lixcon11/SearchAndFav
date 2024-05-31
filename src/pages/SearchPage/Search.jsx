@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import SearchImageDisplayer from "./SearchImageDisplayer";
+import { SearchImageDisplayer } from "./SearchImageDisplayer";
 import { useEffect } from "react";
 import { useDispatch} from "react-redux";
-import { fetchPhotoListThunk } from "../App/Features/search/searchThunk";
-import SearcherZone from "../App/Components/SearcherZone";
+import { fetchPhotoListThunk } from "../../features/search/searchThunk";
+import { SearcherZone } from "../../components/SearcherZone";
 
-const Search= () => {
+export const Search= () => {
   const theme = "--searchTheme";
   const placeholder = "Search new images"
   const favs = useSelector(state => state.favorites)
@@ -27,5 +27,3 @@ const Search= () => {
     </>
   )
 }
-
-export default Search;

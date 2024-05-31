@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import glass from "../images/magnify.png"
+import  glass  from "../icons/magnify.png"
 
 
-const SearcherZone = ({children , theme, handler, placeholder}) => {
+export const SearcherZone = ({children , theme, handler, placeholder}) => {
     return(
         <>
             <section className={`search-zone ${theme}`}>
@@ -21,5 +21,3 @@ const SearcherZone = ({children , theme, handler, placeholder}) => {
         </>
     )
 }
-
-export default SearcherZone;

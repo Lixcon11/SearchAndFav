@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SearchPhotoOverlay from "./SearchPhotoOverlay";
-import ImageDisplayerZone from "../App/Components/ImageDisplayerZone";
-import { fetchPhotoListThunk } from "../App/Features/search/searchThunk";
+import { SearchPhotoOverlay } from "./SearchPhotoOverlay";
+import { ImageDisplayerZone } from "../../components/ImageDisplayerZone";
+import { fetchPhotoListThunk } from "../../features/search/searchThunk";
 
-const SearchImageDisplayer = () => {
+export const SearchImageDisplayer = () => {
     const dispatch = useDispatch()
     const [photos, setPhotos] = useState()
     const [loading, setLoading] = useState(true);
@@ -50,5 +50,3 @@ const SearchImageDisplayer = () => {
         </>
     )
 }
-
-export default SearchImageDisplayer;

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const ImageDisplayerZone = ({ children }) => {
+export const ImageDisplayerZone = ({ children }) => {
     return(
         <>
             <section className="display-zone">
@@ -9,5 +9,3 @@ const ImageDisplayerZone = ({ children }) => {
         </>
     )
 }
-
-export default ImageDisplayerZone;
