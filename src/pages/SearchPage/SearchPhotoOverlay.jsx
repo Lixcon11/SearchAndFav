@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Overlay } from "../../components/Overlay"
 import { useSelector } from "react-redux"
 import { addFavorite, removeFavorite } from "../../features/favorites/favoritesSlice";
@@ -12,30 +12,17 @@ export const SearchPhotoOverlay = ({ photo }) => {
     const favs = useSelector(state => state.favorites)
     const dispatch = useDispatch()
 
-    useEffect(()=> {
-        let heartColor = blackHeart;
-
-        for(const fav of favs){
-            if(fav.id === photo.id){
-                heartColor = redHeart;
-            }
-        }
-
-        setHeart(heartColor)
-    },[favs, photo])
-
     const favHandler = () => {
-
-        for(const fav of favs){
-            
-            if(fav.id === photo.id){
-                dispatch(removeFavorite(photo))
-                return;
-            }
+        if(favs.filter(favPhoto => favPhoto.id === photo.id)[0]){
+            dispatch(removeFavorite(photo))
+            setHeart(blackHeart)
         }
-        const date = new Date();
-        const fullDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-        dispatch(addFavorite({...photo, date: fullDate}))
+        else {
+            const date = new Date();
+            const fullDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+            dispatch(addFavorite({...photo, date: fullDate}))
+            setHeart(redHeart)
+        }
     }
 
     return(

@@ -1,8 +1,8 @@
 export const sortByPreference = (arrayOfobjects, toSortBy) =>{
     const toBeSorted = [...arrayOfobjects];
     const sortedArray = [toBeSorted.shift()];
-
-    for(const object of toBeSorted){
+    
+    toBeSorted.map(object => {
         let isLast = true;
 
         for(let i = 0; i < sortedArray.length;i++){
@@ -15,7 +15,7 @@ export const sortByPreference = (arrayOfobjects, toSortBy) =>{
         if(isLast){
             sortedArray.push(object)
         }
-    }
+    })
 
     return sortedArray;
 }

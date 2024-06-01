@@ -1,7 +1,7 @@
-export const sortData = data => {
+export const parseImage = data => {
     let newData = [];
 
-    for(const object of data) {
+    data.map(object => {
         const newObject = {}
         newObject.likes = object.likes;
         newObject.id = object.id;
@@ -10,7 +10,7 @@ export const sortData = data => {
         newObject.description = object.description;
         newObject.urls = object.urls;
         newData.push(newObject)
-    }
+    })
 
     return newData;
 }

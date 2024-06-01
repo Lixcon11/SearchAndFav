@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { sortData } from "./sortData";
+import { parseImage } from "./parseImage";
 
 export const fetchPhotoListThunk = createAsyncThunk("search/fetchPhotoList", async text => {
     const key = "Pe-sDrxuFO_vg07i5DKjWOb4O0223VPqHZQHpK20UWw";
@@ -16,8 +16,8 @@ export const fetchPhotoListThunk = createAsyncThunk("search/fetchPhotoList", asy
 
         if(request.ok) {
             const data = await request.json();
-            const sortedData = sortData(text ? data.results: data);
-            return sortedData;
+            const newData = parseImage(text ? data.results: data);
+            return newData;
         }
 
         return null;

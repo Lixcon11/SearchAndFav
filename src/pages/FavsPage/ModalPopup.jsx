@@ -24,9 +24,7 @@ export const ModalPopup = ({ modal, setModal }) => {
         <>
             <article className={`popup --${modal.class}`}>
                 <div className="content">
-                    <div >
-                        <img className="image"src={modal.photo.urls.regular}/>
-                    </div>
+                    <img src={modal.photo.urls.regular}/>
                     <div className="info">
                         <ul>
                             <li>Title: {modal.photo.description ? modal.photo.description: "Untiltled"}</li>

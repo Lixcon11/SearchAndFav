@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -16,28 +15,8 @@ body {
   --unfav: #FF6759;
 }
 
-h1 {
-  text-align: center;
-  display: inline;
-  font-size: 48px;
-  font-family: "Tillana", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  & .search {
-    color: var(--search)
-  }
-
-  & .middle {
-    color: var(--neutral)
-  }
-
-  & .favs {
-    color: var(--fav)
-  }
-}
-
-p, li, input {
-  color: #3E3E3E;
+p, li, input, a {
+  text-decoration: none;
   font-family: "Voces", sans-serif;
   color: #3E3E3E;
   font-weight: 400;
@@ -45,13 +24,15 @@ p, li, input {
   font-size: 1rem;
 }
 
-h1 span {
-  text-align: center;
-}
+.icon {
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
 
-a {
-  text-decoration: none;
-  color: #3E3E3E;
+  &.--small {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .styledButton {
@@ -96,19 +77,6 @@ a {
     border-radius: 8px;
     border: 1px solid #E0E0E0;
   }
-
-  & .glass {
-    background: inherit;
-    border: 0px;
-    cursor: pointer;
-    margin-right: 3px;
-  }
-}
-
-.display-zone {
-  display: flex;
-  flex-flow:row wrap;
-  justify-content:space-around;
 }
 
 .search-zone {
@@ -128,34 +96,78 @@ a {
     box-shadow: 7px 0px 18px 0px var(--fav);
   }
 
-  & .searcher-container {
-    margin-bottom: 15px;
-
-    & .searcher {
-      display: inline-block;
-      margin-bottom: 10px;
-
-      & .glass {
-        margin-left: 6px;
-      }
+  h1 {
+    text-align: center;
+    display: block;
+    font-size: 48px;
+    font-family: "Tillana", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  
+    & span {
+      text-align: center;
     }
+  
+    & span:nth-child(1) {
+      color: var(--search)
+    }
+  
+    & span:nth-child(2) {
+      color: var(--neutral)
+    }
+  
+    & span:nth-child(3) {
+      color: var(--fav)
+    }
+  }
+  
+  & .searcher {
+    display: inline-block;
+    margin-bottom: 10px;
 
-    & .link-buttons {
-      display: block;
+    & .glass {
+      background: inherit;
+      border: 0px;
+      cursor: pointer;
+      margin-left: 6px;
+      transform: translateY(4px);
+    }
+  }
 
-      & button {
-        display: inline;
-        margin: 5px;
-      }
+  & .link-buttons {
+    display: block;
+    margin-top: 5px;
+
+    & button {
+      display: inline;
+      margin: 5px;
     }
   }
 
   & .sort-by {
-    
+    margin-top: 8px;
     & button {
       margin: 5px 2px;
     }
   }
+}
+
+.display-zone {
+  display: flex;
+  flex-flow:row wrap;
+  justify-content:space-around;
+
+  .display-photo{
+    position: relative;
+    width: 400px;
+    align-self: center;
+  }
+}
+
+.display-photo:hover > .overlay,
+.display-photo:focus > .overlay,
+.display-photo:focus-within > .overlay {
+  opacity: 1;
 }
 
 .overlay {
@@ -209,6 +221,11 @@ a {
     position: relative;
     text-align: center;
 
+    & img {
+      max-height: 600px;
+      max-width: 300px;
+    }
+
     & .close {
       position: absolute;
       top: 10px;
@@ -248,53 +265,29 @@ a {
   }
 }
 
-.image {
-  max-height: 600px;
-  max-width: 300px;
-}
-
-.icon {
-  width: 160px;
-  height: 160px;
-  cursor: pointer;
-
-  &.--small {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.display-photo{
-  position: relative;
-  width: 400px;
-  align-self: center;
-}
-
-.display-photo:hover > .overlay,
-.display-photo:focus > .overlay,
-.display-photo:focus-within > .overlay {
-  opacity: 1;
-}
-
-
-
-
-
 @media only screen and (min-width: 1000px) {
-
-  h1 {
-    position: absolute;
-    left: 50px;
-    top: 10px;
-    line-height: 1.1;
-  }
-
-  h1 span {
-    display: block;
-  }
 
   .search-zone {
     height: 180px;
+
+    h1 {
+      position: absolute;
+      left: 50px;
+      top: 10px;
+      line-height: 1.1;
+  
+      & span {
+        display: block;
+      }
+    }
+
+    & .searcher{
+      margin-top: 50px;
+    }
+
+    & .sort-by {
+      margin-top: 2px;
+    }
 
     & .link-buttons {
       position: absolute;
@@ -306,35 +299,34 @@ a {
         display: block;
       }
     }
+  }
 
-    & .searcher-container {
-      padding-top: 40px;
-      margin-bottom: 5px;
-  
+  .popup {
+
+    & .content {
+
+      & img {
+        max-height: 600px;
+        max-width: 1800px;
+      }
+
+      .info {
+        align-items: center;
+        display: flex;
+        height: 100px;
+        justify-content: space-evenly;
+        margin-bottom: 15px;
+    
+        & ul {
+          margin-right: 20px;
+        }
+      }
+
+      .__unfav {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+      }
     }
   }
-
-  .image {
-    max-height: 600px;
-    max-width: 1800px;
-  }
-
-  .__unfav {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-  }
-
-  .info {
-    align-items: center;
-    display: flex;
-    height: 100px;
-    justify-content: space-evenly;
-    margin-bottom: 15px;
-
-    & ul {
-      margin-right: 20px;
-    }
-  }
-
 }

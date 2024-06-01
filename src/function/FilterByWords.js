@@ -1,8 +1,8 @@
 export const filterByWords = (arrayOfobjects, text) => {
     const strings = text.split(" ")
     const newArray = []
-    
-    for(const object of arrayOfobjects){
+
+    arrayOfobjects.map(object => {
         let hasAll = true;
 
         if(object.description){
@@ -15,7 +15,7 @@ export const filterByWords = (arrayOfobjects, text) => {
                 newArray.push(object)
             }
         }
-    }
+    })
 
     return newArray;
 }

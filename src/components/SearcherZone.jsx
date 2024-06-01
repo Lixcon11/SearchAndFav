@@ -7,7 +7,7 @@ export const SearcherZone = ({children , theme, handler, placeholder}) => {
     return(
         <>
             <section className={`search-zone ${theme}`}>
-                <h1><span className="search">Search</span><span className="middle"> & </span><span className="favs">Favs</span></h1>
+                <h1><span>Search</span><span> & </span><span>Favs</span></h1>
                 <form onSubmit={handler} className="searcher form-input">
                     <input type="text" name="input" placeholder={placeholder}/>
                     <button className="glass"><img src={glass} className="icon --small"/></button>
