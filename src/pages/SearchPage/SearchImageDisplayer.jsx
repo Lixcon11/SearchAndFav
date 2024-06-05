@@ -40,7 +40,7 @@ export const SearchImageDisplayer = () => {
                 {!loading ? photos.map((element, i) => {
                     return(
                         <div key={i} className="display-photo">
-                            <img src={element.urls.small}/>
+                            <img src={element.urls.small} className="photo"/>
                             <SearchPhotoOverlay photo={element}/>
                         </div>
                     )

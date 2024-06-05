@@ -25,8 +25,8 @@ p, li, input, a {
 }
 
 .icon {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   cursor: pointer;
 
   &.--small {
@@ -156,11 +156,17 @@ p, li, input, a {
   display: flex;
   flex-flow:row wrap;
   justify-content:space-around;
+  gap: 25px;
 
-  .display-photo{
+  & .display-photo{
     position: relative;
-    width: 400px;
     align-self: center;
+    margin-left: 8%;
+
+    & .photo {
+      width: 92%;
+    }
+
   }
 }
 
@@ -172,7 +178,7 @@ p, li, input, a {
 
 .overlay {
   display: flex;
-  width: 400px;
+  width: 92%;
   inset: 0;
   background-color: #D9D9D950;
   position: absolute;
@@ -299,6 +305,23 @@ p, li, input, a {
         display: block;
       }
     }
+  }
+  
+  .display-zone .display-photo {
+    margin-left: 0px;
+  
+    & .photo {
+          width: auto;
+    }
+  }
+
+  .overlay {
+    width: auto;
+  }
+
+  .icon {
+    width: 160px;
+    height: 160px;
   }
 
   .popup {
